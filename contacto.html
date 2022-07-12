@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="./assets/styles.css">
+  <link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon">
+  
+  <title>Contacto</title>
+</head>
+
+<body>
+  <header>
+    <div class="hero">
+      <nav class="navbar navbar-expand-lg navbar-dark w-100">
+        <div class="container d-flex justify-content-between">
+          <a class="navbar-brand" href="./index.html"><img class="img-fluid imgcandy me-5"
+              src="./assets/img/francopetshop.png" target="blank" alt="logo"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOff"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="offcanvas offcanvas-end bg-dark" tabindex="-1" aria-labelledby="offcanvasLeftLabel"
+            id="navbarOff">
+            <ul class="navbar-nav w-100 ps-4 bg-negro offcanvas-body align-items-center">
+
+              <li class="nav-item active">
+                
+                <a class="nav-link fs-5 me-3" href="./Index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fs-5 me-3" href="./juguetes.html">Jugueteria</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fs-5 me-3" href="./farmacia.html">Farmacia</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fs-5 me-3" href="#">Contacto</a>
+              </li>
+            </ul>
+          </div>
+          <div class="ps-5 mt-3 mt-lg-0 gap-3 d-flex">
+            <button class="btn-nav invisible position-relative mx-1" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#fav" aria-controls="offcanvasRight">
+            <i class="bi bi-bag-heart"></i>
+            <span v-if="productosFav.length != 0"
+            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+            {{productosFav.length}}
+            <span class="visually-hidden">unread messages</span>
+            </span>
+            </button>
+            <button class="btn-nav mx-1 invisible position-relative" type="button" data-bs-toggle="offcanvas"
+              data-bs-target="#carrito" aria-controls="offcanvasRight">
+              <i class="bi bi-cart3"></i>
+              <span v-if="productosCarrito.length != 0"
+              class="position-absolute translate-middle top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              {{productosCarrito.length}}
+              <span class="visually-hidden">unread messages</span>
+              </span>
+              </button>
+              <i class="bi bi-person" @click="inicioDeUsuario"></i>
+
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container pt-5" id="app">
+
+    <div class="container msg">
+      <div class="row align-items-center justify-content-center">
+        <div v-on:submit.prevent class="col col-lg-5">
+
+          <div class="mb-3">
+            <label for="name" class="form-label fs-5 text-white">Nombre y apellido:</label>
+            <input v-model="nombre" type="text" class="form-control rounded-0" id="name" placeholder="name"/>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label pt-4 fs-5 text-white">Email:</label>
+            <input v-model="email" type="text" class="form-control rounded-0" id="email" placeholder="email"/>
+          </div>
+          <div class="mb-3">
+            <label for="telefono" class="form-label pt-4 fs-5 text-white">Teléfono:</label>
+            <input v-model="telefono" type="text" class="form-control rounded-0" id="telefono" placeholder="telefono"/>
+          </div>
+          <div class="mb-3">
+            <label for="nombreMascota" class="form-label pt-4 fs-5 text-white">Nombre de tu mascota:</label>
+            <input v-model="nombreMascota" type="text" class="form-control rounded-0" id="nombre de tu mascota" placeholder="nombre de tu mascota"/>
+          </div>
+          <div class="d-flex gap-5">
+              <div class="form-check ">
+                <input class="form-check-input" type="checkbox" value="" id="perro">
+                <label class="form-check-label text-white" for="perro">
+                  Perro
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="gato">
+                <label class="form-check-label text-white" for="gato">
+                  Gato
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="otro">
+                <label class="form-check-label text-white" for="otro">
+                  Otro
+                </label>
+              </div>
+          </div>
+          <div class="mb-3">
+            <label for="msgg" class="form-label pt-4 fs-5 text-white">Mensaje:</label>
+            <input v-model="mensaje" type="text" class="form-control msg1 pb-5 rounded-0" id="msgg" placeholder="mensaje"/>
+          </div>
+          <div class="mb-3 d-flex justify-content-end">
+            <button @click="mensajeDeAviso()" class="btn text-light rounded-0" style="background-color: #4940ED">
+              Enviar </button>
+          </div>
+        </div>
+        <div class="col col-lg-5 mb-5">
+          <img class="imgperrocontact" src="./assets/img/fotocontact.webp" alt="">
+          <img class="imgperrocontact" src="./assets/img/fotocontact2.webp" alt="">
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <footer class="bg-dark">
+    <!--container-->
+    <div class="container">
+      <!--row-->
+      <div class="row">
+        <!-- columns-->
+        <!--columna sobre nosotros-->
+        <div class="col text-center p-3">
+          <h5 class="text-center pt-2 pb-2">SOBRE NOSOTROS</h5>
+          <ul>
+            <li><i class="bi bi-whatsapp"></i> +54 0303 456000</li>
+            <li><i class="bi bi-envelope"></i> francopetshop07@gmail.com</li>
+            <li><i class="bi bi-geo-alt"></i> Rio de Janeiro 300, CABA</li>
+            <li><img src="./assets/img/creditCard.png" class="tarjetas" alt="mediosDePago"></li>
+          </ul>
+        </div>
+        <!--columna info-->
+        <div class="col text-center p-3">
+          <h5 class="pt-2 pb-2 text-center">INFORMACION</h5>
+          <ul>
+            <li><a href="#">Contactanos</a></li>
+            <li><a href="./farmacia.html">Farmacia</a></li>
+            <li><a href="./juguetes.html">Juguetes</a></li>
+          </ul>
+        </div>
+        <!--columna redes-->
+        <div class="col text-center d-flex flex-column p-3 p-2">
+          <h5 class="pt-2 pb-2 text-center">NUESTRAS REDES</h5>
+          <div class="imgFooter p-3 d-flex gap-3 justify-content-center">
+            <a href=""><i class="bi bi-telephone iconoFooter"></i></a>
+            <a href="https://api.whatsapp.com/" target="_blank"><i class="bi bi-whatsapp iconoFooter"></i></a>
+            <a href="https://www.instagram.com/" target="_blank"><i class="bi bi-instagram iconoFooter"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center">
+      <p class="text-white">© 2022 Copyright: Team Huellitas - Cohort 30.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://unpkg.com/vue@3"></script>
+  <script src="./assets/script.js"></script>
+</body>
+</html>
