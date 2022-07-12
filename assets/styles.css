@@ -20,7 +20,7 @@ main {
     margin-right: 1rem;
 }
 nav{
-    height: 15vh;
+    height: 20vh;
 }
 .imgcandy{
     height: 50px;
@@ -281,6 +281,9 @@ footer ul {
       border-radius: .60rem;
     }
     header {
+      height: 15vh;
+    }
+    nav {
       height: 15vh;
     }
 
